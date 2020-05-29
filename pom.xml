@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xiaomaigou.cms</groupId>
+    <artifactId>xiaomaigou_cms</artifactId>
+    <packaging>pom</packaging>
+    <version>1.2.3</version>
+    <url>http://www.xiaomaigou.com</url>
+    <modules>
+        <module>xiaomaigou_cms_common</module>
+        <module>xiaomaigou_cms_dao</module>
+        <module>xiaomaigou_cms_service</module>
+        <module>xiaomaigou_cms_admin</module>
+        <module>xiaomaigou_cms_sdk_dtk</module>
+        <module>xiaomaigou_cms_sdk_tbk</module>
+        <module>xiaomaigou_cms_sdk_jdcps</module>
+    </modules>
+
+    <!-- aliyun central-->
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>aliyun maven</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyunmaven</id>
+            <name>aliyun maven</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <!-- 集中管理依赖版本 -->
+    <properties>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
+        <mysql.version>5.1.45</mysql.version>
+        <httpclient.version>4.5.9</httpclient.version>
+        <fastjson.version>1.2.59</fastjson.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
+        <mybatis-plus-boot.version>3.3.0</mybatis-plus-boot.version>
+        <ehcache2.version>2.10.5</ehcache2.version>
+        <junit.version>4.12</junit.version>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring-boot-dependencies，依赖版本统一管理 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- web依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- spring-security -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- oauth2 -->
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+            <!-- 数据校验 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- 缓存cache -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-cache</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- ehcache本地缓存 -->
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache2.version}</version>
+            </dependency>
+
+            <!-- MySQL -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- mybatis-plus，mybatis-plus已经集成mybatis和mybatis-spring依赖，请勿在项目中同时引入mybatis-plus和mybatis、mybatis-spring -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot.version}</version>
+            </dependency>
+
+            <!-- httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- apache commons-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.9</version>
+            </dependency>
+            <!-- apache commons BeanUtils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.4</version>
+            </dependency>
+
+            <!-- swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+
+            <!-- xiaomaigou_cms_common -->
+            <dependency>
+                <groupId>com.xiaomaigou.cms</groupId>
+                <artifactId>xiaomaigou_cms_common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- xiaomaigou_cms_dao -->
+            <dependency>
+                <groupId>com.xiaomaigou.cms</groupId>
+                <artifactId>xiaomaigou_cms_dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 大淘客开放平台SDK -->
+            <dependency>
+                <groupId>com.xiaomaigou.cms</groupId>
+                <artifactId>xiaomaigou_cms_sdk_dtk</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 淘宝开发平台API(淘宝客API) -->
+            <dependency>
+                <groupId>com.xiaomaigou.cms</groupId>
+                <artifactId>xiaomaigou_cms_sdk_tbk</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 京东开发平台CPS API -->
+            <dependency>
+                <groupId>com.xiaomaigou.cms</groupId>
+                <artifactId>xiaomaigou_cms_sdk_jdcps</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <plugins>
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${encoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- spring-boot打包插件(如果在父工程中添加，则所有子模块都将继承该插件，无需子模块再次添加) -->
+            <!--<plugin>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--<version>${spring-boot.version}</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<goals>-->
+            <!--<goal>repackage</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<mainClass></mainClass>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+</project>
