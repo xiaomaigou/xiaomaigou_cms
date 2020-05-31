@@ -1,0 +1,90 @@
+<ehcache>
+    <diskStore path="java.io.tmpdir/cache"/>
+
+    <!--
+    name：缓存名称，必须唯一；
+    maxElementsInMemory：缓存最大个数；
+    eternal：是否永久保存，一旦设置了永久有效，timeout（即timeToIdleSeconds和timeToLiveSeconds）将不起作用；
+    timeToIdleSeconds：缓存对象失效前允许的最大闲置时间（单位：s），仅eternal="false"有效；
+    timeToLiveSeconds：缓存对象失效前允许的最大存活时间（单位：s），仅eternal="false"有效，即当缓存对象的存活时间达到timeToLiveSeconds值时，不管其是否达到timeToIdleSeconds，该缓存对象都会失效；
+    overflowToDisk：表示当缓存的对象数量达到maxElementsInMemory值时，是否将对象写道磁盘；
+    diskPersistent：是否缓存虚拟机重启期数据；
+    diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔；
+     -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+    />
+    <cache name="tbk_tbkDgOptimusMaterial_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+    <cache name="tbk_tbkDgMaterialOptional_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+    <cache name="tbk_tbkJuItemsSearch_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+    <cache name="tbk_tbkItemRecommend_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+    <cache name="tbk_tbkShopRecommend_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+
+    <cache name="content_homeswiperslide_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+
+    <cache name="helloWorld_goods_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="3"
+           timeToLiveSeconds="10"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"/>
+    <cache name="helloWorld_user_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="5"
+           timeToLiveSeconds="10"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"/>
+
+</ehcache>
