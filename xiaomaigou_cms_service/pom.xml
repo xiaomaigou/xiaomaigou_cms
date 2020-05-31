@@ -11,5 +11,106 @@
 
     <artifactId>xiaomaigou_cms_service</artifactId>
 
+    <dependencies>
+        <!-- web依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <!--  swagger 2.9.2依赖的swagger-models 1.5.20存在问题，将其排除，另外引入swagger-models 1.5.23 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.23</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <!-- 数据校验 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!-- 缓存cache -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!-- ehcache本地缓存 -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+        <!-- xiaomaigou_cms_common -->
+        <dependency>
+            <groupId>com.xiaomaigou.cms</groupId>
+            <artifactId>xiaomaigou_cms_common</artifactId>
+            <!-- managed version -->
+        </dependency>
+
+        <!-- xiaomaigou_cms_dao -->
+        <dependency>
+            <groupId>com.xiaomaigou.cms</groupId>
+            <artifactId>xiaomaigou_cms_dao</artifactId>
+            <!-- managed version -->
+        </dependency>
+
+        <!-- 大淘客开放平台SDK -->
+        <dependency>
+            <groupId>com.xiaomaigou.cms</groupId>
+            <artifactId>xiaomaigou_cms_sdk_dtk</artifactId>
+            <!-- managed version -->
+        </dependency>
+
+        <!-- 淘宝开发平台API(淘宝客API) -->
+        <dependency>
+            <groupId>com.xiaomaigou.cms</groupId>
+            <artifactId>xiaomaigou_cms_sdk_tbk</artifactId>
+            <!-- managed version -->
+        </dependency>
+
+        <!-- 京东开发平台CPS API -->
+        <dependency>
+            <groupId>com.xiaomaigou.cms</groupId>
+            <artifactId>xiaomaigou_cms_sdk_jdcps</artifactId>
+            <!-- managed version -->
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- spring-boot打包插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass></mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

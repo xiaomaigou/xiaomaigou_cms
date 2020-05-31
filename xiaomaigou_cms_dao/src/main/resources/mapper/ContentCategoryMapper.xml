@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomaigou.cms.dao.mapper.ContentCategoryMapper">
+
+    <!-- 可根据实际业务需求决定是否使用 -->
+    <resultMap type="com.xiaomaigou.cms.dao.entity.ContentCategoryEntity" id="contentCategoryEntityResultMap">
+        <result property="contentCategoryId" column="content_category_id"/>
+        <result property="contentCategoryCode" column="content_category_code"/>
+        <result property="contentCategoryName" column="content_category_name"/>
+        <result property="createPersonId" column="create_person_id"/>
+        <result property="updatePersonId" column="update_person_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 自定义SQL -->
+    <select id="listContentCategoryByContentCategoryId" resultMap="contentCategoryEntityResultMap">
+        SELECT * FROM tb_content_category
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="contentCategoryId!=null and contentCategoryId!=''">
+                AND content_category_id=#{contentCategoryId}
+            </if>
+        </trim>
+        ORDER BY content_category_id DESC
+    </select>
+
+</mapper>
