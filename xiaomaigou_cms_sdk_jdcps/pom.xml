@@ -11,5 +11,14 @@
 
     <artifactId>xiaomaigou_cms_sdk_jdcps</artifactId>
 
+    <dependencies>
+        <!-- 京东开发平台CPS API,需要手动安装jar包 -->
+        <!-- mvn install:install-file -Dfile=jd-cps-client-2.2.jar -DgroupId=com.jd.api.cps -DartifactId=jd-cps-client -Dversion=2.2 -Dpackaging=jar -->
+        <dependency>
+            <groupId>com.jd.api.cps</groupId>
+            <artifactId>jd-cps-client</artifactId>
+            <version>2.2</version>
+        </dependency>
+    </dependencies>
 
 </project>

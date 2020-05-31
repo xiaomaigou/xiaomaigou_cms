@@ -11,5 +11,15 @@
 
     <artifactId>xiaomaigou_cms_sdk_tbk</artifactId>
 
+    <dependencies>
+        <!-- 淘宝开发平台API,需要手动安装jar包 -->
+        <!-- mvn install:install-file -Dfile=taobao-sdk-java-auto_1457166217151-20190617.jar -DgroupId=com.taobao.api -DartifactId=tbk -Dversion=2019.06.17 -Dpackaging=jar -->
+        <dependency>
+            <groupId>com.taobao.api</groupId>
+            <artifactId>tbk</artifactId>
+            <version>2019.06.17</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
