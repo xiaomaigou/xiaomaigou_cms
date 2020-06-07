@@ -14,7 +14,6 @@ import com.xiaomaigou.cms.dao.mapper.ContentMapper;
 import com.xiaomaigou.cms.service.dto.ContentDTO;
 import com.xiaomaigou.cms.service.service.ContentService;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Date;
 

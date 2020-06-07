@@ -36,7 +36,17 @@ public class CacheConstant implements Serializable {
     public static final String CACHE_NAME_TBK_TBKSHOPRECOMMEND_CACHE = "tbk_tbkShopRecommend_cache";
 
     /**
-     * 内容(广告)缓存
+     * 首页轮播广告缓存
      */
     public static final String CACHE_NAME_CONTENT_HOMESWIPERSLIDE_CACHE = "content_homeswiperslide_cache";
+    /**
+     * 首页中下部广告缓存
+     */
+    public static final String CACHE_NAME_CONTENT_HOMESWIPERSLIDEDOWN_CACHE = "content_homeswiperslidedown_cache";
+
+    /**
+     * 首页右部广告缓存
+     */
+    public static final String CACHE_NAME_CONTENT_HOMESWIPERSLIDERIGHT_CACHE = "content_homeswiperslideright_cache";
+
 }

@@ -70,6 +70,24 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="1200"/>
 
+    <cache name="content_homeswiperslidedown_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+
+    <cache name="content_homeswiperslideright_cache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="1200"/>
+
     <cache name="helloWorld_goods_cache"
            maxElementsInMemory="10000"
            eternal="false"
