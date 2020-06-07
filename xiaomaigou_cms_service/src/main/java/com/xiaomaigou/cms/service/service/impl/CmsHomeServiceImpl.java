@@ -1,12 +1,10 @@
 package com.xiaomaigou.cms.service.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaomaigou.cms.dao.entity.ContentEntity;
 import com.xiaomaigou.cms.service.constant.CacheConstant;
 import com.xiaomaigou.cms.service.service.CmsHomeService;
 import com.xiaomaigou.cms.service.service.ContentService;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
