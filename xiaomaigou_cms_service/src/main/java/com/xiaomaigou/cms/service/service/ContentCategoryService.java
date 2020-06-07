@@ -33,6 +33,19 @@ public interface ContentCategoryService extends IService<ContentCategoryEntity> 
     Page<ContentCategoryEntity> listAllPage(Integer pageNo, Integer pageSize);
 
     /**
+     * 搜索内容（广告）分类(分页)
+     *
+     * @param pageNo              当前页，默认1
+     * @param pageSize            每页显示条数，默认10
+     * @param contentCategoryCode 内容分类code
+     * @param contentCategoryName 分类名称
+     * @param createPersonId      创建人ID
+     * @param status              状态，-1删除，0无效，1有效
+     * @return 内容（广告）分类
+     */
+    Page<ContentCategoryEntity> search(Integer pageNo, Integer pageSize, String contentCategoryCode, String contentCategoryName, String createPersonId, Integer status);
+
+    /**
      * 根据内容（广告）分类ID获取内容（广告）分类详情
      *
      * @param contentCategoryId 内容（广告）分类ID

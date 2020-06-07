@@ -34,7 +34,7 @@ public class ContentCategoryEntity implements Serializable {
      * 内容分类code
      */
     @TableField(value = "content_category_code")
-    @ApiModelProperty(value = "内容分类code", name = "contentCategoryCode")
+    @ApiModelProperty(value = "内容分类code", name = "contentCategoryCode", required = true)
     private String contentCategoryCode;
 
     /**
@@ -73,10 +73,10 @@ public class ContentCategoryEntity implements Serializable {
     private Date updateTime;
 
     /**
-     * 状态，0无效，1有效
+     * 状态，-1删除，0无效，1有效
      */
     @TableField(value = "status")
-    @ApiModelProperty(value = "状态，0无效，1有效", name = "status")
+    @ApiModelProperty(value = "状态，-1删除，0无效，1有效", name = "status", required = true)
     private Integer status;
 
     public ContentCategoryEntity() {

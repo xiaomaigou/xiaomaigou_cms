@@ -21,13 +21,13 @@ public class ContentCategoryDTO implements Serializable {
     /**
      * 内容分类ID
      */
-    @ApiModelProperty(value = "内容分类ID", name = "contentCategoryId", required = true)
-    private String contentCategoryId;
+//    @ApiModelProperty(value = "内容分类ID", name = "contentCategoryId", required = true)
+//    private String contentCategoryId;
 
     /**
      * 内容分类code
      */
-    @ApiModelProperty(value = "内容分类code", name = "contentCategoryCode")
+    @ApiModelProperty(value = "内容分类code", name = "contentCategoryCode", required = true)
     private String contentCategoryCode;
 
     /**
@@ -61,16 +61,15 @@ public class ContentCategoryDTO implements Serializable {
     private Date updateTime;
 
     /**
-     * 状态，0无效，1有效
+     * 状态，-1删除，0无效，1有效
      */
-    @ApiModelProperty(value = "状态，0无效，1有效", name = "status")
+    @ApiModelProperty(value = "状态，-1删除，0无效，1有效", name = "status", required = true)
     private Integer status;
 
     public ContentCategoryDTO() {
     }
 
-    public ContentCategoryDTO(String contentCategoryId, String contentCategoryCode, String contentCategoryName, String createPersonId, String updatePersonId, Date createTime, Date updateTime, Integer status) {
-        this.contentCategoryId = contentCategoryId;
+    public ContentCategoryDTO(String contentCategoryCode, String contentCategoryName, String createPersonId, String updatePersonId, Date createTime, Date updateTime, Integer status) {
         this.contentCategoryCode = contentCategoryCode;
         this.contentCategoryName = contentCategoryName;
         this.createPersonId = createPersonId;
@@ -78,14 +77,6 @@ public class ContentCategoryDTO implements Serializable {
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.status = status;
-    }
-
-    public String getContentCategoryId() {
-        return contentCategoryId;
-    }
-
-    public void setContentCategoryId(String contentCategoryId) {
-        this.contentCategoryId = contentCategoryId;
     }
 
     public String getContentCategoryCode() {
@@ -147,8 +138,7 @@ public class ContentCategoryDTO implements Serializable {
     @Override
     public String toString() {
         return "ContentCategoryDTO{" +
-                "contentCategoryId='" + contentCategoryId + '\'' +
-                ", contentCategoryCode='" + contentCategoryCode + '\'' +
+                "contentCategoryCode='" + contentCategoryCode + '\'' +
                 ", contentCategoryName='" + contentCategoryName + '\'' +
                 ", createPersonId='" + createPersonId + '\'' +
                 ", updatePersonId='" + updatePersonId + '\'' +

@@ -47,7 +47,7 @@ public class ContentCategoryController {
         }
     }
 
-    @ApiOperation(value = "内容（广告）分类(分页)", notes = "获取内容（广告）分类(分页)")
+    @ApiOperation(value = "所有内容（广告）分类(分页)", notes = "获取所有内容（广告）分类(分页)")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNo", value = "当前页，默认1", paramType = "query", required = false, dataType = "int", defaultValue = "1"),
             @ApiImplicitParam(name = "pageSize", value = "每页显示条数，默认10", paramType = "query", required = false, dataType = "int", defaultValue = "10")
@@ -62,6 +62,32 @@ public class ContentCategoryController {
         } catch (Exception e) {
             logger.error(String.format("获取内容（广告）分类失败!pageNo=[%s],pageSize=[%s]", pageNo, pageSize), e);
             return result.fail("获取内容（广告）分类失败，请稍后重试!");
+        }
+    }
+
+    @ApiOperation(value = "搜索内容（广告）分类(分页)", notes = "搜索内容（广告）分类(分页)")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNo", value = "当前页，默认1", paramType = "query", required = false, dataType = "int", defaultValue = "1"),
+            @ApiImplicitParam(name = "pageSize", value = "每页显示条数，默认10", paramType = "query", required = false, dataType = "int", defaultValue = "10"),
+            @ApiImplicitParam(name = "contentCategoryCode", value = "内容分类code", paramType = "query", required = false, dataType = "String"),
+            @ApiImplicitParam(name = "contentCategoryName", value = "分类名称", paramType = "query", required = false, dataType = "String"),
+            @ApiImplicitParam(name = "createPersonId", value = "创建人ID", paramType = "query", required = false, dataType = "String"),
+            @ApiImplicitParam(name = "status", value = "状态，-1删除，0无效，1有效", paramType = "query", required = false, dataType = "int")})
+    @GetMapping("search")
+    public Result<Page<ContentCategoryEntity>> search(@RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo,
+                                                      @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize,
+                                                      @RequestParam(value = "contentCategoryCode", required = false) String contentCategoryCode,
+                                                      @RequestParam(value = "contentCategoryName", required = false) String contentCategoryName,
+                                                      @RequestParam(value = "createPersonId", required = false) String createPersonId,
+                                                      @RequestParam(value = "status", required = false) Integer status) {
+
+        Result<Page<ContentCategoryEntity>> result = new Result<>();
+        try {
+            Page<ContentCategoryEntity> contentCategoryEntityPage = contentCategoryService.search(pageNo, pageSize, contentCategoryCode, contentCategoryName, createPersonId, status);
+            return result.success(contentCategoryEntityPage);
+        } catch (Exception e) {
+            logger.error(String.format("搜索内容（广告）分类失败!pageNo=[%s],pageSize=[%s],contentCategoryCode=[%s],contentCategoryName=[%s],createPersonId=[%s],status=[%s]", pageNo, pageSize, contentCategoryCode, contentCategoryName, createPersonId, status), e);
+            return result.fail("搜索内容（广告）分类失败，请稍后重试!");
         }
     }
 

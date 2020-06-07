@@ -8,11 +8,13 @@ import com.xiaomaigou.cms.dao.entity.ContentCategoryEntity;
 import com.xiaomaigou.cms.dao.mapper.ContentCategoryMapper;
 import com.xiaomaigou.cms.service.dto.ContentCategoryDTO;
 import com.xiaomaigou.cms.service.service.ContentCategoryService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,6 +50,23 @@ public class ContentCategoryServiceImpl extends ServiceImpl<ContentCategoryMappe
     }
 
     @Override
+    public Page<ContentCategoryEntity> search(Integer pageNo, Integer pageSize, String contentCategoryCode, String contentCategoryName, String createPersonId, Integer status) {
+        if (null == pageNo || pageNo < 1) {
+            pageNo = 1;
+        }
+        if (null == pageSize || pageSize < 1) {
+            pageSize = 10;
+        }
+        QueryWrapper<ContentCategoryEntity> contentCategoryEntityQueryWrapper = new QueryWrapper<>();
+        contentCategoryEntityQueryWrapper.eq(StringUtils.isNotEmpty(contentCategoryCode), "content_category_code", contentCategoryCode);
+        contentCategoryEntityQueryWrapper.like(StringUtils.isNotEmpty(contentCategoryName), "content_category_name", contentCategoryName);
+        contentCategoryEntityQueryWrapper.eq(StringUtils.isNotEmpty(createPersonId), "create_person_id", createPersonId);
+        contentCategoryEntityQueryWrapper.eq(status != null, "status", status);
+        contentCategoryEntityQueryWrapper.orderByDesc("create_time", "update_time");
+        return this.page(new Page<>(pageNo, pageSize), contentCategoryEntityQueryWrapper);
+    }
+
+    @Override
     public ContentCategoryEntity detail(String contentCategoryId) {
         return this.getById(contentCategoryId);
     }
@@ -57,6 +76,11 @@ public class ContentCategoryServiceImpl extends ServiceImpl<ContentCategoryMappe
         ContentCategoryEntity contentCategoryEntity = new ContentCategoryEntity();
         BeanUtils.copyProperties(contentCategoryDTO, contentCategoryEntity);
         contentCategoryEntity.setContentCategoryId(IdWorker.getIdStr());
+        contentCategoryEntity.setCreatePersonId("xiaomaigou");
+        contentCategoryEntity.setUpdatePersonId("xiaomaigou");
+        contentCategoryEntity.setCreateTime(new Date());
+        contentCategoryEntity.setUpdateTime(new Date());
+        contentCategoryEntity.setStatus(1);
         logger.debug(String.format("新增内容（广告）分类:contentCategoryEntity=[%s]", contentCategoryEntity.toString()));
         return this.save(contentCategoryEntity);
     }
@@ -69,6 +93,8 @@ public class ContentCategoryServiceImpl extends ServiceImpl<ContentCategoryMappe
             return false;
         }
         BeanUtils.copyProperties(contentCategoryDTO, contentCategoryEntity);
+        contentCategoryEntity.setUpdatePersonId("xiaomaigou");
+        contentCategoryEntity.setUpdateTime(new Date());
         logger.debug(String.format("更新内容（广告）分类:contentCategoryEntity=[%s]", contentCategoryEntity.toString()));
         return this.updateById(contentCategoryEntity);
     }
