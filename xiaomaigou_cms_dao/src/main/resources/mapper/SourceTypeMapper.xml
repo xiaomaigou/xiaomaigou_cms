@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomaigou.cms.dao.mapper.SourceTypeMapper">
+
+    <!-- 可根据实际业务需求决定是否使用 -->
+    <resultMap type="com.xiaomaigou.cms.dao.entity.SourceTypeEntity" id="sourceTypeEntityResultMap">
+        <result property="sourceTypeId" column="source_type_id"/>
+        <result property="sourceTypeCode" column="source_type_code"/>
+        <result property="sourceTypeName" column="source_type_name"/>
+        <result property="createPersonId" column="create_person_id"/>
+        <result property="updatePersonId" column="update_person_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 自定义SQL -->
+    <select id="listSourceTypeBysourceTypeId" resultMap="sourceTypeEntityResultMap">
+        SELECT * FROM tb_source_type
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="sourceTypeId!=null and sourceTypeId!=''">
+                AND source_type_id=#{sourceTypeId}
+            </if>
+        </trim>
+        ORDER BY source_type_id DESC
+    </select>
+
+</mapper>

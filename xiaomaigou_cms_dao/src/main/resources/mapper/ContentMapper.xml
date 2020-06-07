@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomaigou.cms.dao.mapper.ContentMapper">
+
+    <!-- 可根据实际业务需求决定是否使用 -->
+    <resultMap type="com.xiaomaigou.cms.dao.entity.ContentEntity" id="contentEntityResultMap">
+        <result property="contentId" column="content_id"/>
+        <result property="contentCategoryCode" column="content_category_code"/>
+        <result property="contentTitle" column="content_title"/>
+        <result property="contentSubtitle" column="content_subtitle"/>
+        <result property="contentDescription" column="content_description"/>
+        <result property="contentUrl" column="content_url"/>
+        <result property="contentPic" column="content_pic"/>
+        <result property="originalPrice" column="original_price"/>
+        <result property="couponAmount" column="coupon_amount"/>
+        <result property="sortOrder" column="sort_order"/>
+        <result property="sourceTypeCode" column="source_type_code"/>
+        <result property="label" column="label"/>
+        <result property="remark" column="remark"/>
+        <result property="createPersonId" column="create_person_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updatePersonId" column="update_person_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 自定义SQL -->
+    <select id="listContentBycontentId" resultMap="contentEntityResultMap">
+        SELECT * FROM tb_content
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="contentId!=null and contentId!=''">
+                AND content_id=#{contentId}
+            </if>
+        </trim>
+        ORDER BY content_id DESC
+    </select>
+
+</mapper>
