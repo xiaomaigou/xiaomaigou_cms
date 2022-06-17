@@ -53,7 +53,7 @@
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
         <mysql.version>5.1.45</mysql.version>
         <httpclient.version>4.5.9</httpclient.version>
-        <fastjson.version>1.2.59</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <mybatis-plus-boot.version>3.3.0</mybatis-plus-boot.version>
         <ehcache2.version>2.10.5</ehcache2.version>
