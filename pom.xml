@@ -51,7 +51,7 @@
     <properties>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
-        <mysql.version>5.1.45</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <httpclient.version>4.5.9</httpclient.version>
         <fastjson.version>1.2.59</fastjson.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
